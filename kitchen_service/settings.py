@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "crispy_forms",
     "apps.dish_types",
+    "apps.cooks"
 ]
 
 MIDDLEWARE = [

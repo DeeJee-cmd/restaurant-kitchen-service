@@ -25,4 +25,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", index, name="index"),
     path("", include("apps.dish_types.urls")),
+    path("", include("apps.cooks.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

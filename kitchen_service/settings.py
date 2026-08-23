@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django_bootstrap5",
-    "crispy_forms"
+    "crispy_bootstrap5",
+    "crispy_forms",
     "apps.dish_types",
 ]
 
@@ -59,7 +59,7 @@ ROOT_URLCONF = "kitchen_service.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templetes" / "kitchen"],
+        "DIRS": [BASE_DIR / "templetes"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

@@ -1,10 +1,26 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>{% block title %}Restaurant Kitchen Service{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-$END$
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="{% url 'dish_types:dish-type-list' %}">Dish Types</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Restaurant Kitchen Service</p>
+    </footer>
 </body>
 </html>

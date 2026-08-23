@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from django.views import generic
 
-# Create your views here.
+from apps.dish_types.models import DishType
+
+
+class DishTypeListView(generic.ListView):
+    model = DishType
+    template_name = "dish_types/dish_type_list.html"
+    context_object_name = "dish_type_list"

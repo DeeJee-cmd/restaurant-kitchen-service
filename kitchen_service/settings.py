@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "crispy_forms",
     "apps.dish_types",
+    "apps.cooks"
 ]
 
 MIDDLEWARE = [
@@ -107,6 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = "cooks.Cook"
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/

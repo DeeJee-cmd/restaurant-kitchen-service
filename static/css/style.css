@@ -1,100 +1,19 @@
-:root {
-    --color-primary: #d97a3f;
-    --color-primary-dark: #b8622f;
-    --color-dark: #2b2420;
-    --color-light: #faf6f1;
-    --color-muted: #8a7f75;
-    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
 body {
-    margin: 0;
-    padding-top: 20px;
-    background-color: var(--color-light);
-    color: var(--color-dark);
-    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin-top: 20px;
+    background: white;
 }
 
-/* Header / navigation */
-header {
-    background-color: var(--color-dark);
-    padding: 14px 24px;
-    box-shadow: var(--shadow-soft);
+.sidebar-nav {
+    padding: 0;
+    list-style: none;
 }
 
-header nav a {
-    color: var(--color-light);
-    text-decoration: none;
-    font-weight: 600;
-    margin-right: 20px;
-    transition: color 0.2s ease;
-}
-
-header nav a:hover {
-    color: var(--color-primary);
-}
-
-/* Main content container */
-main {
-    max-width: 960px;
-    margin: 30px auto;
-    padding: 0 20px;
-}
-
-h1, h2, h3 {
-    color: var(--color-dark);
-    font-weight: 700;
-}
-
-/* Cards / list items */
-.list-group-item {
-    border: none;
-    border-radius: 10px !important;
-    margin-bottom: 10px;
-    padding: 14px 18px;
-    background-color: #fff;
-    box-shadow: var(--shadow-soft);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.list-group-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-}
-
-.list-group-item a {
-    color: var(--color-primary-dark);
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.list-group-item a:hover {
-    color: var(--color-primary);
-}
-
-/* Buttons */
-.btn-primary {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
-}
-
-.btn-primary:hover {
-    background-color: var(--color-primary-dark);
-    border-color: var(--color-primary-dark);
-}
-
-/* Utility */
 .link-to-page {
     float: right;
     margin: 0 2px 0 2px;
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-    color: var(--color-muted);
-    font-size: 0.9rem;
-    border-top: 1px solid #e5ded6;
+.navbar {
+  position: relative;
+  z-index: 1000;
 }

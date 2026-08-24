@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>{{ cook.username }} - Restaurant</title>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid" style="max-width: 900px;">
+  
+  <div class="card shadow-sm border-0 p-4 mb-4">
+    <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+      <div>
+        <h1 class="h2 fw-bold mb-1">{{ cook.first_name }} {{ cook.last_name }}</h1>
+        <div class="text-muted">@{{ cook.username }}</div>
+      </div>
+      <div>
+        <a href="{% url 'cooks:cook-update' pk=cook.id %}" class="btn btn-outline-primary me-2">
+          <i class="bi bi-pencil me-1"></i> Edit
+        </a>
+        <a href="{% url 'cooks:cook-delete' pk=cook.id %}" class="btn btn-outline-danger">
+          <i class="bi bi-trash me-1"></i> Delete
+        </a>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <span class="text-muted">Experience:</span>
+      <h5 class="fw-bold text-secondary mt-1">
+        {{ cook.years_of_experience }} year{{ cook.years_of_experience|pluralize }}
+      </h5>
+    </div>
+
+    <h3 class="h5 fw-bold mb-3 border-bottom pb-2">Assigned Dishes</h3>
+    {% if cook.dishes.all %}
+      <div class="table-responsive">
+        <table class="table table-hover align-middle">
+          <thead class="table-light">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Dish Name</th>
+              <th scope="col">Type</th>
+              <th scope="col">Price</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for dish in cook.dishes.all %}
+              <tr>
+                <td>#{{ dish.id }}</td>
+                <td>
+                  <a href="{% url 'dishes:dish-detail' pk=dish.id %}" class="fw-semibold text-decoration-none">
+                    {{ dish.name }}
+                  </a>
+                </td>
+                <td><span class="badge bg-secondary">{{ dish.dish_type }}</span></td>
+                <td>${{ dish.price }}</td>
+                <td class="text-muted small">{{ dish.description|truncatewords:8 }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <p class="text-muted italic">This cook is not assigned to any dishes yet.</p>
+    {% endif %}
+
+    <div class="mt-4 pt-3 border-top">
+      <a href="{% url 'cooks:cook-list' %}" class="btn btn-secondary">
+        <i class="bi bi-arrow-left me-1"></i> Back to List
+      </a>
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}

@@ -24,6 +24,8 @@ from kitchen_service.views import index
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", index, name="index"),
-    path("", include("apps.dish_types.urls")),
-    path("", include("apps.cooks.urls")),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("dish-types/", include("apps.dish_types.urls", namespace="dish_types")),
+    path("cooks/", include("apps.cooks.urls", namespace="cooks")),
+    path("dishes/", include("apps.dishes.urls", namespace="dishes")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

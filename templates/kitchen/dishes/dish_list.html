@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+  <title>Dishes - Restaurant</title>
+{% endblock %}
+
+{% block content %}
+  <div class="container-fluid">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 class="h3 fw-bold mb-0">Dishes</h1>
+      <a class="btn btn-primary" href="{% url 'dishes:dish-create' %}">
+        <i class="bi bi-plus-lg me-1"></i> Create Dish
+      </a>
+    </div>
+
+    <!-- Search Bar -->
+    <form method="get" action="" class="mb-4">
+      <div class="input-group input-group-lg rounded-pill border bg-white p-1 shadow-sm">
+        <input
+            type="text"
+            name="name"
+            value="{{ request.GET.name }}"
+            class="form-control border-0 rounded-pill bg-transparent ps-4 shadow-none"
+            placeholder="Search..."
+        >
+        <button class="btn btn-primary rounded-3 px-4 ms-1" type="submit">
+          Search
+        </button>
+      </div>
+    </form>
+
+    <!-- Table -->
+    {% if dish_list %}
+      <div class="card shadow-sm border-0">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="table-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Dish Type</th>
+              <th scope="col">Price</th>
+              <th scope="col">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for dish in dish_list %}
+              <tr>
+                <td>
+                  <a href="{% url 'dishes:dish-detail' dish.id %}" class="fw-bold text-decoration-none">
+                    #{{ dish.id }}
+                  </a>
+                </td>
+                <td>{{ dish.name }}</td>
+                <td><span class="badge bg-secondary">{{ dish.dish_type }}</span></td>
+                <td>${{ dish.price }}</td>
+                <td class="text-muted">{{ dish.description|truncatewords:10 }}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    {% else %}
+      <div class="alert alert-info shadow-sm" role="alert">
+        No dishes found.
+      </div>
+    {% endif %}
+
+  </div>
+{% endblock %}

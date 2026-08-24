@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Cooks - Restaurant</title>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 fw-bold mb-0">Cooks</h1>
+    <a class="btn btn-primary" href="{% url 'cooks:cook-create' %}">
+      <i class="bi bi-person-plus me-1"></i> Create Cook
+    </a>
+  </div>
+
+  {% if cook_list %}
+    <div class="card shadow-sm border-0">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Username</th>
+              <th scope="col">Full Name</th>
+              <th scope="col">Years of Experience</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cook in cook_list %}
+              <tr>
+                <td><span class="fw-bold">#{{ cook.id }}</span></td>
+                <td>
+                  <a href="{% url 'cooks:cook-detail' pk=cook.id %}" class="fw-bold text-decoration-none">
+                    {{ cook.username }}
+                  </a>
+                  {% if user == cook %}
+                    <span class="badge bg-success ms-1">Me</span>
+                  {% endif %}
+                </td>
+                <td>{{ cook.first_name }} {{ cook.last_name }}</td>
+                <td>{{ cook.years_of_experience }} year{{ cook.years_of_experience|pluralize }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  {% else %}
+    <div class="alert alert-info shadow-sm" role="alert">
+      No cooks found in the system.
+    </div>
+  {% endif %}
+
+</div>
+{% endblock %}

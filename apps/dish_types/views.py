@@ -1,5 +1,5 @@
-from django.views import generic
 from django.urls import reverse_lazy
+from django.views import generic
 
 from apps.dish_types.forms import DishTypeSearchForm, DishTypeForm
 from apps.dish_types.models import DishType
@@ -9,6 +9,7 @@ class DishTypeListView(generic.ListView):
     model = DishType
     template_name = "kitchen/dish_types/dish_type_list.html"
     context_object_name = "dish_type_list"
+    paginate_by = 5
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -22,11 +23,6 @@ class DishTypeListView(generic.ListView):
         if name:
             queryset = queryset.filter(name__icontains=name)
         return queryset
-
-
-class DishTypeDetailView(generic.DetailView):
-    model = DishType
-    template_name = "kitchen/dish_types/dish_type_detail.html"
 
 
 class DishTypeCreateView(generic.edit.CreateView):

@@ -74,22 +74,3 @@ If a fixture file is provided:
 ```bash
 python manage.py loaddata kitchen_db_data.json
 ```
-
-## Project Structure
-
-```
-restaurant_kitchen/
-├── apps/
-│   ├── cooks/         # Cook model, views, urls, templates
-│   ├── dish_types/     # DishType model, views, urls, templates
-│   └── dishes/         # Dish model, views, urls, templates
-├── kitchen_service/    # Project settings, root urls, index view
-├── static/
-│   └── css/
-├── templates/
-│   ├── includes/       # sidebar, pagination
-│   ├── kitchen/        # app-specific templates
-│   ├── registration/   # login, logout
-│   └── base.html
-└── manage.py
-```

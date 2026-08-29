@@ -16,8 +16,9 @@ class DishSearchForm(forms.Form):
         label="",
         widget=forms.TextInput(
             attrs={
-                "class": "form-control border-0 rounded-pill bg-transparent ps-4 shadow-none",
+                "class": "form-control border-0 rounded-pill "
+                         "bg-transparent ps-4 shadow-none",
                 "placeholder": "Search...",
             }
-        )
+        ),
     )

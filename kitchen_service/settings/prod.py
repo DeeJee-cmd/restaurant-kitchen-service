@@ -1,9 +1,23 @@
-from .dev import *
+from .base import *
 
+DEBUG = False
 
-DEBUG = os.environ.get("DJANGO_DEBUG", "") == "False"
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
 
-SECRET_KEY = os.environ.get("SECRET_KEY", "59%bf^=tswscl1!xaba!xub-ow#uaq!q^3+u!@04bnhtbo-l5h")
+# Database
+# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': '5432',
+    }
+}
 
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False

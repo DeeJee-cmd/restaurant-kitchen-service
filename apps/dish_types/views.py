@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -5,7 +6,7 @@ from apps.dish_types.forms import DishTypeSearchForm, DishTypeForm
 from apps.dish_types.models import DishType
 
 
-class DishTypeListView(generic.ListView):
+class DishTypeListView(LoginRequiredMixin, generic.ListView):
     model = DishType
     template_name = "kitchen/dish_types/dish_type_list.html"
     context_object_name = "dish_type_list"
@@ -25,21 +26,21 @@ class DishTypeListView(generic.ListView):
         return queryset
 
 
-class DishTypeCreateView(generic.edit.CreateView):
+class DishTypeCreateView(LoginRequiredMixin, generic.edit.CreateView):
     model = DishType
     form_class = DishTypeForm
     template_name = "kitchen/dish_types/dish_type_form.html"
     success_url = reverse_lazy("dish_types:dish-type-list")
 
 
-class DishTypeUpdateView(generic.edit.UpdateView):
+class DishTypeUpdateView(LoginRequiredMixin, generic.edit.UpdateView):
     model = DishType
     form_class = DishTypeForm
     template_name = "kitchen/dish_types/dish_type_form.html"
     success_url = reverse_lazy("dish_types:dish-type-list")
 
 
-class DishTypeDeleteView(generic.edit.DeleteView):
+class DishTypeDeleteView(LoginRequiredMixin, generic.edit.DeleteView):
     model = DishType
     template_name = "kitchen/dish_types/dish_type_confirm_delete.html"
     success_url = reverse_lazy("dish_types:dish-type-list")

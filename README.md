@@ -25,6 +25,8 @@ A Django web application for managing a restaurant kitchen: dish types, dishes, 
 `login: admin`
 `password: 1234qwer`
 
+https://restaurant-kitchen-service-o2m5.onrender.com/
+
 - User authentication (login / logout)
 - **Dish Types** — create and browse dish categories (e.g. Pasta, Desserts, Curries)
 - **Dishes** — create and browse dishes with name, description, price, dish type, and assigned cooks
